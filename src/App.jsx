@@ -1,29 +1,22 @@
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from "./pages/home";
+import Create_thread from "./pages/create-thread";
 
-const FetchData = () => {
-  const [threads, setThreads ] = useState([]);
-  useEffect(() => {
-
-
-    fetch("https://railway.bulletinboard.techtrain.dev/threads",{method: "GET"})
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json);
-      setThreads(json);
-    })
-    .catch(() => alert("error"));
-  },[]);
+function App() {
 
   return (
-    <div style={{ padding:'20px'}}>
-      <h2>スレッド一覧</h2>
-      <ul>
-        {threads.map((threads) => (
-          <li key={threads.id}></li>
-        ))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to = "/">Home</Link>
+        <Link to="create">作成</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/create" element={<Create_thread />}/>
+      </Routes>
+    </BrowserRouter>
   );
-};
 
-export default FetchData;
+};
+export default App;
