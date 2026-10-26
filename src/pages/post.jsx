@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import Create_post from "./create-post";
 
 function Post() {
   const [posts, setPosts] = useState([]);
@@ -31,6 +31,8 @@ function Post() {
         ))}
 
       </ul>
+
+      <Create_post onPostCreated={() => fetchPosts(thread_id)} />
     </div>
   )
 }
