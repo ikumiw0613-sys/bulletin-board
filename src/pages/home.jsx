@@ -20,7 +20,11 @@ function Home() {
       <h2>スレッド一覧</h2>
       <ul>
         {threads.map((thread) => (
-          <li key={thread.id}> {thread.title}</li>
+          <li key={thread.id}>
+             <Link to={`/threads/${thread.id}`}>
+               {thread.title}
+             </Link>
+          </li>
         ))}
       </ul>
     </div>
