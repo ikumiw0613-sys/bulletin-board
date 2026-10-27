@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-
+import Home from "./home";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 
 function Create_thread() {
   const [newTitle, setNewTitle] = useState("");
+
+  const navigate = useNavigate();
+  
   const createThread = () => {  
       fetch("https://railway.bulletinboard.techtrain.dev/threads", { method: "POST", body: JSON.stringify({ title: newTitle }) })
       .then(() => {
@@ -10,6 +14,10 @@ function Create_thread() {
         setNewTitle("");
       })
       .catch(() => alert("作成エラー"));
+  }
+
+  const handleOnClick = () =>  {
+    navigate("/");
   }
 
   return (
@@ -21,7 +29,12 @@ function Create_thread() {
        onChange={(e) => setNewTitle(e.target.value)}
        />
 
-       <button onClick={createThread}>作成</button>
+       <button onClick={createThread} className="button">作成</button>
+
+       <div>
+
+        <button onClick={handleOnClick} className="button"> HOME</button>
+       </div>
     </div>
   );
 }

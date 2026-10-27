@@ -8,11 +8,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <nav>
-        <Link to = "/">Home</Link>
-        <Link to="create">作成</Link>
-
-      </nav>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/create" element={<Create_thread />}/>
