@@ -6,9 +6,14 @@ function Create_thread() {
   const [newTitle, setNewTitle] = useState("");
 
   const navigate = useNavigate();
-  
-  const createThread = () => {  
-      fetch("https://railway.bulletinboard.techtrain.dev/threads", { method: "POST", body: JSON.stringify({ title: newTitle }) })
+
+  const createThread = () => {
+    if(!newTitle.trim()) {
+      alert("文字を入力してください")
+      return 
+
+    }
+    fetch("https://railway.bulletinboard.techtrain.dev/threads", { method: "POST", body: JSON.stringify({ title: newTitle }) })
       .then(() => {
         alert("スレッド作成");
         setNewTitle("");
@@ -16,25 +21,25 @@ function Create_thread() {
       .catch(() => alert("作成エラー"));
   }
 
-  const handleOnClick = () =>  {
+  const handleOnClick = () => {
     navigate("/");
   }
 
   return (
-    <div>
+    <div className="create-thread-container">
       <h2>スレッド作成</h2>
-      <input type = "text"
-       placeholder="スレッド名を入力してね"
-       value= {newTitle}
-       onChange={(e) => setNewTitle(e.target.value)}
-       />
+      <input type="text"
+        placeholder="スレッド名を入力してね"
+        value={newTitle}
+        onChange={(e) => setNewTitle(e.target.value)}
+      />
 
-       <button onClick={createThread} className="button">作成</button>
+      <button onClick={createThread} className="button">作成</button>
 
-       <div>
+      <div>
 
         <button onClick={handleOnClick} className="button"> HOME</button>
-       </div>
+      </div>
     </div>
   );
 }

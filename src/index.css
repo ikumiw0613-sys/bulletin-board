@@ -22,7 +22,7 @@
 }
 
 .thread-card:hover {
-  background-color: #354657;
+  background-color: #7596b7;
 }
 
 .thread-card a {
@@ -37,6 +37,36 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .button {
-  background-color: red;
+  background-color: #a6bef0;
+  color: #290707;
+  border-color: #e2eafb;
+}
+
+.button:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.post-button {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.post-card {
+  background-color: white;
+
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-wrap: anywhere;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
 }

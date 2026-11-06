@@ -22,14 +22,14 @@ function Create_post({ onPostCreated }) {
   }
 
   return (
-    <div>
+    <div className="post-button">
       <input type="text"
         placeholder="内容を入力してね"
         value={newPost}
         onChange={(e) => setNewPost(e.target.value)}
       />
 
-      <button onClick={createPost}>投稿</button>
+      <button onClick={createPost} className="button">投稿</button>
     </div>
   )
 }
