@@ -13,10 +13,13 @@ function Create_thread() {
       return 
 
     }
+    
     fetch("https://railway.bulletinboard.techtrain.dev/threads", { method: "POST", body: JSON.stringify({ title: newTitle }) })
-      .then(() => {
-        alert("スレッド作成");
-        setNewTitle("");
+      .then((res) => {
+        if(!res.ok){
+          throw new Error("スレッド作成に失敗しました")
+        }
+        navigate("/");
       })
       .catch(() => alert("作成エラー"));
   }
